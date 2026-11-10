@@ -14,8 +14,8 @@ import {
   Sparkles,
   ShieldCheck,
   CreditCard,
-  ExternalLink,
   BookOpen,
+  Code2,
 } from 'lucide-react';
 
 const navigation = [
@@ -33,25 +33,25 @@ export function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 bg-slate-900/90 border-r border-slate-800/80 flex flex-col shrink-0 h-screen sticky top-0 backdrop-blur-xl z-30">
+    <aside className="w-64 bg-zinc-950/95 border-r border-red-950/30 flex flex-col shrink-0 h-screen sticky top-0 backdrop-blur-xl z-30">
       {/* Brand Header */}
-      <div className="p-5 border-b border-slate-800/80 flex items-center justify-between">
+      <div className="p-5 border-b border-red-950/30 flex items-center justify-between">
         <Link href="/dashboard" className="flex items-center gap-3 group">
-          <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          <div className="h-9 w-9 rounded-xl bg-gradient-to-tr from-red-600 via-rose-600 to-amber-600 flex items-center justify-center shadow-lg shadow-red-600/30 group-hover:scale-105 transition-transform">
             <Sparkles className="w-5 h-5 text-white" />
           </div>
           <div>
             <div className="font-bold tracking-tight text-white flex items-center gap-1.5 text-base">
-              COLLECTWISE <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">AI</span>
+              COLLECTWISE <span className="text-[10px] font-semibold uppercase px-1.5 py-0.5 rounded bg-red-500/15 text-red-400 border border-red-500/30">AI</span>
             </div>
-            <p className="text-[10px] text-slate-400 font-medium">Smart Receivables & PayPal</p>
+            <p className="text-[10px] text-zinc-400 font-medium">Smart Receivables & PayPal</p>
           </div>
         </Link>
       </div>
 
       {/* Navigation Links */}
       <nav className="flex-1 p-3 space-y-1 overflow-y-auto">
-        <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+        <div className="px-3 py-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-500">
           Financial Management
         </div>
 
@@ -65,16 +65,16 @@ export function Sidebar() {
               href={item.href}
               className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-all ${
                 isActive
-                  ? 'bg-gradient-to-r from-indigo-600/20 to-cyan-600/10 text-cyan-300 border border-cyan-500/30 shadow-sm shadow-cyan-950/40'
-                  : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/50'
+                  ? 'bg-gradient-to-r from-red-950/50 to-rose-950/30 text-red-300 border border-red-500/40 shadow-sm shadow-red-950/40 font-semibold'
+                  : 'text-zinc-400 hover:text-zinc-100 hover:bg-zinc-900/60'
               }`}
             >
               <div className="flex items-center gap-3">
-                <Icon className={`w-4 h-4 ${isActive ? 'text-cyan-400' : 'text-slate-400'}`} />
+                <Icon className={`w-4 h-4 ${isActive ? 'text-red-400' : 'text-zinc-400'}`} />
                 <span>{item.name}</span>
               </div>
               {item.badge && (
-                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                <span className="text-[10px] font-medium px-1.5 py-0.5 rounded-full bg-red-500/15 text-red-300 border border-red-500/30">
                   {item.badge}
                 </span>
               )}
@@ -84,48 +84,55 @@ export function Sidebar() {
       </nav>
 
       {/* Live System Integration Badges */}
-      <div className="p-3 mx-3 mb-3 bg-slate-950/60 rounded-xl border border-slate-800/80 text-xs space-y-2">
-        <div className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 flex items-center justify-between">
+      <div className="p-3 mx-3 mb-3 bg-black/80 rounded-xl border border-red-950/40 text-xs space-y-2">
+        <div className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400 flex items-center justify-between">
           <span>Active Architecture</span>
-          <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="h-1.5 w-1.5 rounded-full bg-red-500 animate-pulse" />
         </div>
-        <div className="flex items-center justify-between text-slate-300">
+        <div className="flex items-center justify-between text-zinc-300">
           <span className="flex items-center gap-1.5 text-[11px]">
             <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
             Supabase DB (RLS)
           </span>
           <span className="text-[10px] text-emerald-400 font-mono">Ready</span>
         </div>
-        <div className="flex items-center justify-between text-slate-300">
+        <div className="flex items-center justify-between text-zinc-300">
           <span className="flex items-center gap-1.5 text-[11px]">
-            <CreditCard className="w-3.5 h-3.5 text-sky-400" />
+            <CreditCard className="w-3.5 h-3.5 text-rose-400" />
             PayPal Invoicing v2
           </span>
-          <span className="text-[10px] text-sky-400 font-mono">Sandbox</span>
+          <span className="text-[10px] text-rose-400 font-mono">Sandbox</span>
         </div>
-        <div className="flex items-center justify-between text-slate-300">
+        <div className="flex items-center justify-between text-zinc-300">
           <span className="flex items-center gap-1.5 text-[11px]">
-            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+            <Sparkles className="w-3.5 h-3.5 text-red-400" />
             Gemini 3.8 Flash
           </span>
-          <span className="text-[10px] text-purple-400 font-mono">Tools</span>
+          <span className="text-[10px] text-red-400 font-mono">Tools</span>
+        </div>
+        <div className="flex items-center justify-between text-zinc-300 pt-1 border-t border-zinc-800/60">
+          <span className="flex items-center gap-1.5 text-[11px]">
+            <Code2 className="w-3.5 h-3.5 text-zinc-400" />
+            Open Source
+          </span>
+          <span className="text-[10px] text-red-400 font-mono font-bold">MIT</span>
         </div>
       </div>
 
       {/* User profile footer */}
-      <div className="p-3 border-t border-slate-800/80 bg-slate-900/60 flex items-center justify-between">
+      <div className="p-3 border-t border-red-950/30 bg-zinc-950/80 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-purple-500 to-indigo-500 flex items-center justify-center text-xs font-bold text-white shadow">
+          <div className="h-8 w-8 rounded-full bg-gradient-to-tr from-red-600 via-rose-600 to-amber-600 flex items-center justify-center text-xs font-bold text-white shadow shadow-red-600/20">
             AV
           </div>
           <div className="text-left overflow-hidden">
-            <p className="text-xs font-semibold text-slate-200 truncate">Alex Vance</p>
-            <p className="text-[10px] text-slate-400 truncate">Lumina Digital Studio</p>
+            <p className="text-xs font-semibold text-zinc-200 truncate">Alex Vance</p>
+            <p className="text-[10px] text-zinc-400 truncate">Lumina Digital Studio</p>
           </div>
         </div>
         <Link
           href="/settings"
-          className="text-slate-400 hover:text-slate-200 p-1.5 hover:bg-slate-800 rounded-lg transition-colors"
+          className="text-zinc-400 hover:text-red-400 p-1.5 hover:bg-zinc-900 rounded-lg transition-colors"
           title="Settings"
         >
           <Settings className="w-4 h-4" />

@@ -109,7 +109,7 @@ export default function ClientsPage() {
   );
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -119,7 +119,7 @@ export default function ClientsPage() {
           actions={
             <button
               onClick={() => setShowAddModal(true)}
-              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-medium text-xs shadow-md shadow-cyan-500/20 transition-all shrink-0"
+              className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 hover:to-rose-500 text-white font-medium text-xs shadow-md shadow-red-950/40 transition-all shrink-0"
             >
               <Plus className="w-4 h-4" />
               <span>Add Client</span>
@@ -131,16 +131,16 @@ export default function ClientsPage() {
           {/* Search bar */}
           <div className="flex items-center justify-between gap-4">
             <div className="relative w-full sm:w-80">
-              <Search className="absolute left-3 top-2.5 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3 top-2.5 w-4 h-4 text-zinc-500" />
               <input
                 type="text"
                 placeholder="Search clients by name, company, or email..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full bg-slate-900/90 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500"
+                className="w-full bg-zinc-950 border border-zinc-800 rounded-xl pl-9 pr-4 py-2 text-xs text-zinc-200 placeholder-zinc-500 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
               />
             </div>
-            <div className="text-xs text-slate-400">
+            <div className="text-xs text-zinc-400">
               Showing <strong className="text-white">{filteredClients.length}</strong> client account(s)
             </div>
           </div>
@@ -148,26 +148,26 @@ export default function ClientsPage() {
           {/* Clients Grid */}
           {loading ? (
             <div className="p-12 flex flex-col items-center justify-center gap-3">
-              <Loader2 className="w-6 h-6 text-cyan-400 animate-spin" />
-              <p className="text-xs text-slate-400">Loading client records...</p>
+              <Loader2 className="w-6 h-6 text-red-500 animate-spin" />
+              <p className="text-xs text-zinc-400">Loading client records...</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
               {filteredClients.map((client) => (
                 <div
                   key={client.id}
-                  className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 hover:border-slate-700 transition-all backdrop-blur-sm flex flex-col justify-between group"
+                  className="bg-zinc-950/80 border border-zinc-800/80 hover:border-red-950/60 rounded-2xl p-5 transition-all backdrop-blur-sm flex flex-col justify-between group"
                 >
                   <div>
                     {/* Header: Name and Punctuality Badge */}
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div>
-                        <h3 className="font-bold text-white text-sm group-hover:text-cyan-400 transition-colors">
+                        <h3 className="font-bold text-white text-sm group-hover:text-red-400 transition-colors">
                           <Link href={`/clients/${client.id}`}>{client.name}</Link>
                         </h3>
                         {client.company_name && (
-                          <div className="text-xs text-slate-400 flex items-center gap-1 mt-0.5">
-                            <Building className="w-3 h-3 text-slate-500" />
+                          <div className="text-xs text-zinc-400 flex items-center gap-1 mt-0.5">
+                            <Building className="w-3 h-3 text-zinc-500" />
                             <span>{client.company_name}</span>
                           </div>
                         )}
@@ -178,42 +178,42 @@ export default function ClientsPage() {
                           client.payment_punctuality === 'excellent'
                             ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
                             : client.payment_punctuality === 'good'
-                            ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20'
+                            ? 'bg-rose-500/10 text-rose-300 border border-rose-500/20'
                             : client.payment_punctuality === 'slow'
                             ? 'bg-amber-500/10 text-amber-400 border border-amber-500/20'
-                            : 'bg-rose-500/10 text-rose-400 border border-rose-500/20'
+                            : 'bg-red-500/10 text-red-400 border border-red-500/20'
                         }`}
                       >
                         {client.payment_punctuality.replace('_', ' ')}
                       </span>
                     </div>
 
-                    <div className="space-y-1 text-xs text-slate-400 mb-4">
+                    <div className="space-y-1 text-xs text-zinc-400 mb-4">
                       <div className="flex items-center gap-1.5">
-                        <Mail className="w-3.5 h-3.5 text-slate-500" />
+                        <Mail className="w-3.5 h-3.5 text-zinc-500" />
                         <span className="truncate">{client.email}</span>
                       </div>
                       {client.phone && (
                         <div className="flex items-center gap-1.5">
-                          <Phone className="w-3.5 h-3.5 text-slate-500" />
+                          <Phone className="w-3.5 h-3.5 text-zinc-500" />
                           <span>{client.phone}</span>
                         </div>
                       )}
                     </div>
 
                     {/* Financial stats box */}
-                    <div className="bg-slate-950/70 border border-slate-800 rounded-xl p-3 grid grid-cols-2 gap-2 text-xs mb-4">
+                    <div className="bg-black/80 border border-zinc-800/80 rounded-xl p-3 grid grid-cols-2 gap-2 text-xs mb-4">
                       <div>
-                        <div className="text-[10px] text-slate-500 uppercase">Total Invoiced</div>
-                        <div className="font-semibold text-slate-200 mt-0.5">
+                        <div className="text-[10px] text-zinc-500 uppercase">Total Invoiced</div>
+                        <div className="font-semibold text-zinc-200 mt-0.5 font-mono">
                           ${client.total_invoiced.toLocaleString()}
                         </div>
                       </div>
                       <div>
-                        <div className="text-[10px] text-slate-500 uppercase">Outstanding</div>
+                        <div className="text-[10px] text-zinc-500 uppercase">Outstanding</div>
                         <div
-                          className={`font-semibold mt-0.5 ${
-                            client.outstanding_balance > 0 ? 'text-cyan-400' : 'text-slate-400'
+                          className={`font-semibold mt-0.5 font-mono ${
+                            client.outstanding_balance > 0 ? 'text-red-400' : 'text-zinc-400'
                           }`}
                         >
                           ${client.outstanding_balance.toLocaleString()}
@@ -225,7 +225,7 @@ export default function ClientsPage() {
                   {/* Footer link */}
                   <Link
                     href={`/clients/${client.id}`}
-                    className="w-full flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs text-slate-400 hover:text-cyan-400 font-medium transition-colors"
+                    className="w-full flex items-center justify-between pt-3 border-t border-zinc-800/80 text-xs text-zinc-400 hover:text-red-400 font-medium transition-colors"
                   >
                     <span>View Client Invoices</span>
                     <ChevronRight className="w-3.5 h-3.5" />
@@ -237,16 +237,16 @@ export default function ClientsPage() {
 
           {/* Add Client Modal */}
           {showAddModal && (
-            <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-              <div className="bg-slate-900 border border-slate-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
-                <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+              <div className="bg-zinc-950 border border-zinc-800 rounded-2xl max-w-md w-full p-6 space-y-4 shadow-2xl">
+                <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
                   <h3 className="text-sm font-bold text-white flex items-center gap-2">
-                    <Users className="w-4 h-4 text-cyan-400" />
+                    <Users className="w-4 h-4 text-red-500" />
                     <span>Create New Client</span>
                   </h3>
                   <button
                     onClick={() => setShowAddModal(false)}
-                    className="text-slate-400 hover:text-white text-xs"
+                    className="text-zinc-400 hover:text-white text-xs"
                   >
                     ✕
                   </button>
@@ -254,7 +254,7 @@ export default function ClientsPage() {
 
                 <form onSubmit={handleCreateClient} className="space-y-3 text-xs">
                   <div>
-                    <label className="block text-slate-300 font-medium mb-1">
+                    <label className="block text-zinc-300 font-medium mb-1">
                       Full Name *
                     </label>
                     <input
@@ -263,12 +263,12 @@ export default function ClientsPage() {
                       placeholder="e.g., Sarah Connor"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-medium mb-1">
+                    <label className="block text-zinc-300 font-medium mb-1">
                       Email Address *
                     </label>
                     <input
@@ -277,12 +277,12 @@ export default function ClientsPage() {
                       placeholder="sarah@example.com"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-medium mb-1">
+                    <label className="block text-zinc-300 font-medium mb-1">
                       Company / Organization
                     </label>
                     <input
@@ -290,12 +290,12 @@ export default function ClientsPage() {
                       placeholder="Cyberdyne Systems"
                       value={companyName}
                       onChange={(e) => setCompanyName(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-medium mb-1">
+                    <label className="block text-zinc-300 font-medium mb-1">
                       Phone Number
                     </label>
                     <input
@@ -303,12 +303,12 @@ export default function ClientsPage() {
                       placeholder="+1 (555) 019-2831"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-slate-300 font-medium mb-1">
+                    <label className="block text-zinc-300 font-medium mb-1">
                       Payment Notes
                     </label>
                     <textarea
@@ -316,22 +316,22 @@ export default function ClientsPage() {
                       placeholder="Payment terms, special billing instructions..."
                       value={notes}
                       onChange={(e) => setNotes(e.target.value)}
-                      className="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-slate-200 focus:outline-none focus:border-cyan-500"
+                      className="w-full bg-black border border-zinc-800 rounded-xl p-2.5 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                     />
                   </div>
 
-                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-800">
+                  <div className="flex items-center justify-end gap-2 pt-2 border-t border-zinc-800">
                     <button
                       type="button"
                       onClick={() => setShowAddModal(false)}
-                      className="px-3.5 py-2 rounded-xl bg-slate-800 text-slate-300 hover:bg-slate-700"
+                      className="px-3.5 py-2 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-300 hover:bg-zinc-800"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
                       disabled={creating}
-                      className="px-4 py-2 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-semibold flex items-center gap-1.5"
+                      className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 text-white font-semibold flex items-center gap-1.5 shadow-md shadow-red-950/40"
                     >
                       {creating && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                       <span>Save Client</span>

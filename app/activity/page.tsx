@@ -64,20 +64,20 @@ export default function ActivityPage() {
       case 'PAYMENT_RECEIVED':
         return <DollarSign className="w-4 h-4 text-emerald-400" />;
       case 'INVOICE_SENT':
-        return <Send className="w-4 h-4 text-cyan-400" />;
+        return <Send className="w-4 h-4 text-red-400" />;
       case 'REMINDER_SENT':
         return <BellRing className="w-4 h-4 text-amber-400" />;
       case 'AI_INSIGHT':
-        return <Sparkles className="w-4 h-4 text-purple-400" />;
+        return <Sparkles className="w-4 h-4 text-rose-400" />;
       case 'PAYPAL_SYNC':
-        return <RefreshCw className="w-4 h-4 text-sky-400" />;
+        return <RefreshCw className="w-4 h-4 text-red-400" />;
       default:
-        return <Receipt className="w-4 h-4 text-slate-400" />;
+        return <Receipt className="w-4 h-4 text-zinc-400" />;
     }
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -87,7 +87,7 @@ export default function ActivityPage() {
           actions={
             <button
               onClick={fetchActivities}
-              className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-200 transition-colors"
+              className="p-2 rounded-lg bg-zinc-950 border border-zinc-800 text-zinc-400 hover:text-red-400 hover:border-red-950/50 transition-colors"
               title="Refresh Activity"
             >
               <RefreshCw className="w-4 h-4" />
@@ -112,8 +112,8 @@ export default function ActivityPage() {
                 onClick={() => setTypeFilter(f.id)}
                 className={`px-3 py-1.5 rounded-lg font-medium transition-all whitespace-nowrap ${
                   typeFilter === f.id
-                    ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
-                    : 'bg-slate-900 text-slate-400 hover:text-slate-200 border border-slate-800'
+                    ? 'bg-red-950/50 text-red-300 border border-red-500/40 shadow-sm'
+                    : 'bg-zinc-950 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
                 }`}
               >
                 {f.label}
@@ -122,29 +122,29 @@ export default function ActivityPage() {
           </div>
 
           {/* Timeline Feed */}
-          <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-sm">
+          <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-6 backdrop-blur-sm">
             {loading ? (
               <div className="p-12 flex flex-col items-center justify-center gap-3">
-                <Loader2 className="w-6 h-6 text-cyan-400 animate-spin" />
-                <p className="text-xs text-slate-400">Loading audit history...</p>
+                <Loader2 className="w-6 h-6 text-red-500 animate-spin" />
+                <p className="text-xs text-zinc-400">Loading audit history...</p>
               </div>
             ) : filtered.length === 0 ? (
-              <p className="text-xs text-slate-500 py-10 text-center">
+              <p className="text-xs text-zinc-500 py-10 text-center">
                 No activity logs found for this filter.
               </p>
             ) : (
-              <div className="relative border-l border-slate-800 ml-4 space-y-6">
+              <div className="relative border-l border-zinc-800 ml-4 space-y-6">
                 {filtered.map((act) => (
                   <div key={act.id} className="relative pl-6 group">
                     {/* Circle icon on the timeline line */}
-                    <div className="absolute -left-3 top-1 h-6 w-6 rounded-full bg-slate-950 border border-slate-800 flex items-center justify-center group-hover:border-cyan-500 transition-colors shadow-sm">
+                    <div className="absolute -left-3 top-1 h-6 w-6 rounded-full bg-black border border-zinc-800 flex items-center justify-center group-hover:border-red-500 transition-colors shadow-sm">
                       {getActivityIcon(act.activity_type)}
                     </div>
 
                     <div className="space-y-1">
                       <div className="flex items-center justify-between">
                         <h4 className="text-sm font-semibold text-white">{act.title}</h4>
-                        <span className="text-[11px] text-slate-500 font-mono">
+                        <span className="text-[11px] text-zinc-500 font-mono">
                           {new Date(act.created_at).toLocaleTimeString([], {
                             hour: '2-digit',
                             minute: '2-digit',
@@ -153,10 +153,10 @@ export default function ActivityPage() {
                         </span>
                       </div>
 
-                      <p className="text-xs text-slate-400">{act.description}</p>
+                      <p className="text-xs text-zinc-400">{act.description}</p>
 
                       {act.metadata && Object.keys(act.metadata).length > 0 && (
-                        <div className="mt-1.5 inline-block text-[10px] font-mono bg-slate-950/80 px-2 py-0.5 rounded text-slate-400 border border-slate-800">
+                        <div className="mt-1.5 inline-block text-[10px] font-mono bg-black px-2 py-0.5 rounded text-zinc-400 border border-zinc-800">
                           {JSON.stringify(act.metadata)}
                         </div>
                       )}

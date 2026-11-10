@@ -1,11 +1,13 @@
 # COLLECTWISE AI
 > **Get Paid Faster. Let AI Handle the Follow-ups.**
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-dc2626.svg)](LICENSE)
 [![Next.js 15](https://img.shields.io/badge/Next.js-15.5-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![Supabase PostgreSQL](https://img.shields.io/badge/Database-Supabase%20Postgres-3ECF8E?style=flat&logo=supabase)](https://supabase.com/)
 [![PayPal Invoicing API v2](https://img.shields.io/badge/Payment-PayPal%20Invoicing%20v2-003087?style=flat&logo=paypal)](https://developer.paypal.com/)
 [![Gemini 3.8 Flash](https://img.shields.io/badge/AI-Google%20Gemini%203.8%20Flash-4285F4?style=flat&logo=google)](https://ai.google.dev/)
 [![Deploy with Vercel](https://img.shields.io/badge/Deployment-Vercel-black?style=flat&logo=vercel)](https://vercel.com/)
+[![Open Source](https://img.shields.io/badge/Open%20Source-%E2%9D%A4-red.svg)](https://github.com/)
 
 **COLLECTWISE AI** is a production-grade, AI-powered accounts receivable and financial management platform engineered for freelancers, agencies, and small businesses. It connects directly with **PayPal Invoicing API v2**, stores and isolates tenant financials in **Supabase PostgreSQL** via **Row Level Security (RLS)**, and leverages **Google Gemini 3.8 Flash** with **Function Calling** and **Structured Outputs** to draft invoices, predict collection risks, and dispatch personalized, polite yet firm follow-ups with human-in-the-loop safety.
 
@@ -54,7 +56,7 @@
 | Layer | Technology | Details |
 |---|---|---|
 | **Frontend** | Next.js 15+ (App Router), React 19, TypeScript | Server and Client Components with Turbopack |
-| **Styling** | Tailwind CSS v4, tw-animate-css | Dark fintech aesthetic inspired by Linear & Stripe |
+| **Styling** | Tailwind CSS v4, tw-animate-css | Pitch black & crimson/rose fintech aesthetic inspired by Linear |
 | **Icons & Charts** | Lucide React, Recharts | Accessible SVG icons and responsive SVG financial charts |
 | **Database** | Supabase PostgreSQL | 11 tables with Row Level Security (RLS) policies |
 | **Authentication** | Supabase Auth & SSR | `@supabase/ssr` with cookie session persistence |
@@ -317,5 +319,41 @@ See [`docs/VERCEL_DEPLOYMENT.md`](docs/VERCEL_DEPLOYMENT.md) for zero-downtime c
 
 ---
 
-## 📄 License
-MIT License. Built for modern freelancers and fast-growing small businesses.
+## 📄 Open Source License
+
+This project is licensed under the **[MIT License](LICENSE)**:
+
+```text
+MIT License
+
+Copyright (c) 2026 COLLECTWISE AI Contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+### 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/) to contribute to COLLECTWISE AI.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+

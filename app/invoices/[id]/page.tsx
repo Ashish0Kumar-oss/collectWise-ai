@@ -7,7 +7,6 @@ import { Sidebar } from '@/components/sidebar';
 import { Header } from '@/components/header';
 import {
   ArrowLeft,
-  Receipt,
   Send,
   BellRing,
   ExternalLink,
@@ -15,12 +14,8 @@ import {
   Check,
   RefreshCw,
   CheckCircle2,
-  AlertOctagon,
-  Clock,
   DollarSign,
   Loader2,
-  Calendar,
-  Building,
 } from 'lucide-react';
 
 function InvoiceDetailContent() {
@@ -154,12 +149,12 @@ function InvoiceDetailContent() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-slate-950">
+      <div className="flex min-h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Header title="Invoice Details" />
           <div className="flex-1 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+            <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
           </div>
         </div>
       </div>
@@ -168,13 +163,13 @@ function InvoiceDetailContent() {
 
   if (!invoice) {
     return (
-      <div className="flex min-h-screen bg-slate-950">
+      <div className="flex min-h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Header title="Invoice Not Found" />
           <div className="flex-1 p-6 text-center space-y-3">
-            <p className="text-slate-400 text-sm">The requested invoice could not be located.</p>
-            <Link href="/invoices" className="text-cyan-400 text-xs hover:underline">
+            <p className="text-zinc-400 text-sm">The requested invoice could not be located.</p>
+            <Link href="/invoices" className="text-red-400 text-xs hover:underline">
               Return to Invoices
             </Link>
           </div>
@@ -184,7 +179,7 @@ function InvoiceDetailContent() {
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -198,7 +193,7 @@ function InvoiceDetailContent() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <Link
               href="/invoices"
-              className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-200 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs text-zinc-400 hover:text-red-400 transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Back to Invoices</span>
@@ -208,7 +203,7 @@ function InvoiceDetailContent() {
               <button
                 onClick={handleSync}
                 disabled={actionLoading === 'sync'}
-                className="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium flex items-center gap-1.5 transition-colors"
+                className="px-3 py-1.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-300 text-xs font-medium flex items-center gap-1.5 transition-colors border border-zinc-800"
                 title="Verify authoritative PayPal status"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${actionLoading === 'sync' ? 'animate-spin' : ''}`} />
@@ -219,7 +214,7 @@ function InvoiceDetailContent() {
                 <button
                   onClick={handleSend}
                   disabled={actionLoading === 'send'}
-                  className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 text-white text-xs font-semibold flex items-center gap-1.5 shadow-md shadow-cyan-500/20 transition-all"
+                  className="px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-md shadow-red-600/30 transition-all"
                 >
                   {actionLoading === 'send' ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -234,7 +229,7 @@ function InvoiceDetailContent() {
                 <button
                   onClick={handleRemind}
                   disabled={actionLoading === 'remind'}
-                  className="px-3.5 py-1.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
+                  className="px-3.5 py-1.5 rounded-xl bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 border border-rose-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
                 >
                   {actionLoading === 'remind' ? (
                     <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -249,7 +244,7 @@ function InvoiceDetailContent() {
                 <button
                   onClick={handleSimulatePayment}
                   disabled={actionLoading === 'pay'}
-                  className="px-3.5 py-1.5 rounded-xl bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
+                  className="px-3.5 py-1.5 rounded-xl bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 text-xs font-semibold flex items-center gap-1.5 transition-all"
                   title="Simulate client payment completion in sandbox"
                 >
                   {actionLoading === 'pay' ? (
@@ -264,30 +259,30 @@ function InvoiceDetailContent() {
           </div>
 
           {feedback && (
-            <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs flex items-center justify-between">
+            <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-red-300 text-xs flex items-center justify-between">
               <span className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+                <CheckCircle2 className="w-4 h-4 text-red-400" />
                 {feedback}
               </span>
-              <button onClick={() => setFeedback(null)} className="text-slate-400 hover:text-white">
+              <button onClick={() => setFeedback(null)} className="text-zinc-400 hover:text-white">
                 ✕
               </button>
             </div>
           )}
 
           {/* Main Invoice Document View */}
-          <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl space-y-6">
+          <div className="bg-zinc-950/90 border border-red-950/30 rounded-2xl p-6 sm:p-8 backdrop-blur-md shadow-2xl space-y-6">
             {/* Document Header */}
-            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 border-b border-slate-800 pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-6 border-b border-zinc-800 pb-6">
               <div>
-                <div className="text-xs font-semibold text-cyan-400 uppercase tracking-widest">
+                <div className="text-xs font-semibold text-red-400 uppercase tracking-widest">
                   Lumina Digital Studio LLC
                 </div>
                 <h2 className="text-2xl font-bold text-white tracking-tight mt-1 font-mono">
                   {invoice.invoice_number}
                 </h2>
-                <div className="text-xs text-slate-400 mt-1">
-                  Issued: <strong className="text-slate-200">{invoice.issue_date}</strong>
+                <div className="text-xs text-zinc-400 mt-1">
+                  Issued: <strong className="text-zinc-200">{invoice.issue_date}</strong>
                 </div>
               </div>
 
@@ -298,10 +293,10 @@ function InvoiceDetailContent() {
                     invoice.status === 'PAID'
                       ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
                       : invoice.status === 'OVERDUE'
-                      ? 'bg-rose-500/10 text-rose-400 border border-rose-500/30 animate-pulse'
+                      ? 'bg-rose-500/15 text-rose-400 border border-rose-500/40 animate-pulse'
                       : invoice.status === 'SENT'
-                      ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/30'
-                      : 'bg-slate-800 text-slate-300 border border-slate-700'
+                      ? 'bg-red-500/10 text-red-300 border border-red-500/30'
+                      : 'bg-zinc-800/60 text-zinc-300 border border-zinc-700/50'
                   }`}
                 >
                   <span
@@ -310,14 +305,14 @@ function InvoiceDetailContent() {
                         ? 'bg-emerald-400'
                         : invoice.status === 'OVERDUE'
                         ? 'bg-rose-400'
-                        : 'bg-cyan-400'
+                        : 'bg-red-400'
                     }`}
                   />
                   {invoice.status}
                 </span>
 
                 {invoice.paypal_invoice_id && (
-                  <span className="text-[11px] font-mono text-slate-400">
+                  <span className="text-[11px] font-mono text-zinc-400">
                     PayPal ID: {invoice.paypal_invoice_id}
                   </span>
                 )}
@@ -325,28 +320,28 @@ function InvoiceDetailContent() {
             </div>
 
             {/* Recipient & Payment Terms Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-b border-slate-800 pb-6 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-b border-zinc-800 pb-6 text-xs">
               <div>
-                <span className="font-semibold uppercase tracking-wider text-slate-500 text-[10px]">
+                <span className="font-semibold uppercase tracking-wider text-zinc-500 text-[10px]">
                   Billed To
                 </span>
                 <div className="text-base font-bold text-white mt-1">
                   {invoice.client?.name}
                 </div>
-                <div className="text-slate-400 mt-0.5">{invoice.client?.email}</div>
+                <div className="text-zinc-400 mt-0.5">{invoice.client?.email}</div>
                 {invoice.client?.company_name && (
-                  <div className="text-slate-500">{invoice.client.company_name}</div>
+                  <div className="text-zinc-500">{invoice.client.company_name}</div>
                 )}
               </div>
 
               <div className="sm:text-right space-y-1.5">
                 <div>
-                  <span className="text-slate-400">Due Date: </span>
+                  <span className="text-zinc-400">Due Date: </span>
                   <span className="font-bold text-white text-sm">{invoice.due_date}</span>
                 </div>
                 <div>
-                  <span className="text-slate-400">Payment Channel: </span>
-                  <span className="text-sky-400 font-medium">PayPal REST API v2</span>
+                  <span className="text-zinc-400">Payment Channel: </span>
+                  <span className="text-rose-400 font-medium">PayPal REST API v2</span>
                 </div>
                 {invoice.last_reminder_sent_at && (
                   <div className="text-amber-400">
@@ -360,28 +355,28 @@ function InvoiceDetailContent() {
             <div>
               <table className="w-full text-left text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider">
+                  <tr className="border-b border-zinc-800 text-zinc-400 uppercase text-[10px] tracking-wider">
                     <th className="pb-3 font-semibold">Description</th>
                     <th className="pb-3 font-semibold text-center">Qty</th>
                     <th className="pb-3 font-semibold text-right">Unit Price</th>
                     <th className="pb-3 font-semibold text-right">Amount</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-800/60">
+                <tbody className="divide-y divide-zinc-800/60">
                   {invoice.items && invoice.items.length > 0 ? (
                     invoice.items.map((item: any) => (
                       <tr key={item.id}>
-                        <td className="py-3 text-slate-200 font-medium">{item.description}</td>
-                        <td className="py-3 text-center text-slate-400">{item.quantity}</td>
-                        <td className="py-3 text-right text-slate-400">${item.unit_price.toFixed(2)}</td>
+                        <td className="py-3 text-zinc-200 font-medium">{item.description}</td>
+                        <td className="py-3 text-center text-zinc-400">{item.quantity}</td>
+                        <td className="py-3 text-right text-zinc-400">${item.unit_price.toFixed(2)}</td>
                         <td className="py-3 text-right font-semibold text-white">${item.amount.toFixed(2)}</td>
                       </tr>
                     ))
                   ) : (
                     <tr>
-                      <td className="py-3 text-slate-200 font-medium">{invoice.notes || 'Professional Deliverables'}</td>
-                      <td className="py-3 text-center text-slate-400">1</td>
-                      <td className="py-3 text-right text-slate-400">${invoice.amount.toFixed(2)}</td>
+                      <td className="py-3 text-zinc-200 font-medium">{invoice.notes || 'Professional Deliverables'}</td>
+                      <td className="py-3 text-center text-zinc-400">1</td>
+                      <td className="py-3 text-right text-zinc-400">${invoice.amount.toFixed(2)}</td>
                       <td className="py-3 text-right font-semibold text-white">${invoice.amount.toFixed(2)}</td>
                     </tr>
                   )}
@@ -390,20 +385,20 @@ function InvoiceDetailContent() {
             </div>
 
             {/* Financial Totals */}
-            <div className="border-t border-slate-800 pt-4 flex flex-col items-end gap-1.5 text-xs">
-              <div className="w-64 flex justify-between text-slate-400">
+            <div className="border-t border-zinc-800 pt-4 flex flex-col items-end gap-1.5 text-xs">
+              <div className="w-64 flex justify-between text-zinc-400">
                 <span>Subtotal:</span>
-                <span className="font-mono text-slate-200">${invoice.amount.toFixed(2)}</span>
+                <span className="font-mono text-zinc-200">${invoice.amount.toFixed(2)}</span>
               </div>
               {invoice.tax_amount > 0 && (
-                <div className="w-64 flex justify-between text-slate-400">
+                <div className="w-64 flex justify-between text-zinc-400">
                   <span>Tax:</span>
-                  <span className="font-mono text-slate-200">${invoice.tax_amount.toFixed(2)}</span>
+                  <span className="font-mono text-zinc-200">${invoice.tax_amount.toFixed(2)}</span>
                 </div>
               )}
-              <div className="w-64 flex justify-between text-base font-bold text-white pt-2 border-t border-slate-800">
+              <div className="w-64 flex justify-between text-base font-bold text-white pt-2 border-t border-zinc-800">
                 <span>Total Amount:</span>
-                <span className="font-mono text-cyan-400">
+                <span className="font-mono text-red-400 font-bold">
                   ${invoice.total_amount.toFixed(2)} {invoice.currency}
                 </span>
               </div>
@@ -417,12 +412,12 @@ function InvoiceDetailContent() {
 
             {/* PayPal Sandbox Payment Card */}
             {invoice.paypal_payment_url && (
-              <div className="bg-slate-950/80 border border-sky-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <div className="bg-black/90 border border-red-500/30 rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
                 <div className="space-y-1">
-                  <div className="font-semibold text-sky-400 flex items-center gap-1.5">
+                  <div className="font-semibold text-red-400 flex items-center gap-1.5">
                     <span>PayPal Sandbox Client Payment Portal</span>
                   </div>
-                  <div className="text-slate-400 text-[11px] truncate max-w-md font-mono">
+                  <div className="text-zinc-400 text-[11px] truncate max-w-md font-mono">
                     {invoice.paypal_payment_url}
                   </div>
                 </div>
@@ -430,7 +425,7 @@ function InvoiceDetailContent() {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={copyPaymentUrl}
-                    className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs flex items-center gap-1.5 transition-colors"
+                    className="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-zinc-200 text-xs flex items-center gap-1.5 transition-colors border border-zinc-800"
                   >
                     {copied ? (
                       <Check className="w-3.5 h-3.5 text-emerald-400" />
@@ -444,7 +439,7 @@ function InvoiceDetailContent() {
                     href={invoice.paypal_payment_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-3.5 py-1.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-medium text-xs flex items-center gap-1.5 shadow transition-colors"
+                    className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-red-600/25 transition-colors"
                   >
                     <span>Open PayPal</span>
                     <ExternalLink className="w-3.5 h-3.5" />
@@ -463,8 +458,8 @@ export default function InvoiceDetailPage() {
   return (
     <Suspense
       fallback={
-        <div className="flex min-h-screen bg-slate-950 items-center justify-center">
-          <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+        <div className="flex min-h-screen bg-black items-center justify-center">
+          <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
         </div>
       }
     >
@@ -472,4 +467,3 @@ export default function InvoiceDetailPage() {
     </Suspense>
   );
 }
-

@@ -28,7 +28,7 @@ import {
   Cell,
 } from 'recharts';
 
-const COLORS = ['#06b6d4', '#6366f1', '#a855f7', '#ec4899', '#f59e0b'];
+const COLORS = ['#ef4444', '#f43f5e', '#dc2626', '#b91c1c', '#fb7185'];
 
 export default function InsightsPage() {
   const [data, setData] = useState<any>(null);
@@ -44,12 +44,12 @@ export default function InsightsPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-slate-950">
+      <div className="flex min-h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Header title="Financial Insights" />
           <div className="flex-1 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+            <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
           </div>
         </div>
       </div>
@@ -62,7 +62,7 @@ export default function InsightsPage() {
   const recommendations = data?.recommendations || [];
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -74,38 +74,38 @@ export default function InsightsPage() {
         <main className="flex-1 p-6 space-y-6">
           {/* Top Metric Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-sm">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            <div className="bg-zinc-950/80 border border-zinc-800/80 hover:border-red-950/50 rounded-2xl p-5 backdrop-blur-sm">
+              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
                 Overall Collection Efficiency
               </span>
               <div className="text-2xl font-bold text-emerald-400 mt-2 font-mono">
                 {summary.collectionRate}%
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-zinc-400 mt-1">
                 Healthy benchmark is &gt; 85% within 30 days.
               </p>
             </div>
 
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-sm">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            <div className="bg-zinc-950/80 border border-zinc-800/80 hover:border-red-950/50 rounded-2xl p-5 backdrop-blur-sm">
+              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
                 Estimated DSO (Days Sales Outstanding)
               </span>
-              <div className="text-2xl font-bold text-cyan-400 mt-2 font-mono">
+              <div className="text-2xl font-bold text-red-400 mt-2 font-mono">
                 18.4 Days
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-zinc-400 mt-1">
                 Average time from invoice dispatch to PayPal settlement.
               </p>
             </div>
 
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-sm">
-              <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+            <div className="bg-zinc-950/80 border border-zinc-800/80 hover:border-red-950/50 rounded-2xl p-5 backdrop-blur-sm">
+              <span className="text-xs font-semibold text-zinc-400 uppercase tracking-wider">
                 At-Risk Receivables
               </span>
               <div className="text-2xl font-bold text-rose-400 mt-2 font-mono">
                 ${summary.overdueBalance?.toLocaleString()}
               </div>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-zinc-400 mt-1">
                 Past due invoices needing firm automated reminders.
               </p>
             </div>
@@ -114,38 +114,39 @@ export default function InsightsPage() {
           {/* Charts Row */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Monthly Trend */}
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-sm space-y-4">
+            <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-5 backdrop-blur-sm space-y-4">
               <div>
                 <h3 className="text-sm font-semibold text-white">Monthly Collections Trend</h3>
-                <p className="text-xs text-slate-400">Collected vs remaining uncollected per cycle</p>
+                <p className="text-xs text-zinc-400">Collected vs remaining uncollected per cycle</p>
               </div>
 
               <div className="h-64 w-full">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={monthlyRevenue} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
-                    <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" />
-                    <XAxis dataKey="month" stroke="#64748b" fontSize={11} tickLine={false} />
-                    <YAxis stroke="#64748b" fontSize={11} tickLine={false} tickFormatter={(v) => `$${v}`} />
+                    <CartesianGrid strokeDasharray="3 3" stroke="#27272a" />
+                    <XAxis dataKey="month" stroke="#71717a" fontSize={11} tickLine={false} />
+                    <YAxis stroke="#71717a" fontSize={11} tickLine={false} tickFormatter={(v) => `$${v}`} />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0f172a',
-                        borderColor: '#334155',
+                        backgroundColor: '#09090b',
+                        borderColor: '#3f3f46',
                         borderRadius: '0.75rem',
                         fontSize: '12px',
+                        color: '#f4f4f5',
                       }}
                     />
-                    <Bar dataKey="collected" fill="#06b6d4" radius={[4, 4, 0, 0]} name="Collected ($)" />
-                    <Bar dataKey="outstanding" fill="#6366f1" radius={[4, 4, 0, 0]} name="Outstanding ($)" />
+                    <Bar dataKey="collected" fill="#dc2626" radius={[4, 4, 0, 0]} name="Collected ($)" />
+                    <Bar dataKey="outstanding" fill="#f43f5e" radius={[4, 4, 0, 0]} name="Outstanding ($)" />
                   </BarChart>
                 </ResponsiveContainer>
               </div>
             </div>
 
             {/* Client Receivables Concentration */}
-            <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-5 backdrop-blur-sm space-y-4">
+            <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-5 backdrop-blur-sm space-y-4">
               <div>
                 <h3 className="text-sm font-semibold text-white">Receivables Concentration by Client</h3>
-                <p className="text-xs text-slate-400">Distribution of uncollected funds</p>
+                <p className="text-xs text-zinc-400">Distribution of uncollected funds</p>
               </div>
 
               <div className="h-64 w-full flex items-center justify-center">
@@ -166,10 +167,11 @@ export default function InsightsPage() {
                     </Pie>
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#0f172a',
-                        borderColor: '#334155',
+                        backgroundColor: '#09090b',
+                        borderColor: '#3f3f46',
                         borderRadius: '0.75rem',
                         fontSize: '12px',
+                        color: '#f4f4f5',
                       }}
                       formatter={(val: any) => [`$${val.toLocaleString()}`, 'Outstanding']}
                     />
@@ -180,16 +182,16 @@ export default function InsightsPage() {
           </div>
 
           {/* AI Collection Strategies */}
-          <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+          <div className="bg-zinc-950/80 border border-red-950/40 rounded-2xl p-6 backdrop-blur-sm space-y-4">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-xl bg-cyan-500/10 text-cyan-400">
+              <div className="p-2 rounded-xl bg-red-950/60 border border-red-500/30 text-red-400">
                 <Sparkles className="w-5 h-5" />
               </div>
               <div>
                 <h3 className="text-sm font-bold text-white">
                   CollectWise AI Strategic Recommendations
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-zinc-400">
                   Algorithmic collection triggers based on debtor behavior and payment history
                 </p>
               </div>
@@ -199,29 +201,29 @@ export default function InsightsPage() {
               {recommendations.map((rec: any) => (
                 <div
                   key={rec.id}
-                  className="bg-slate-950/70 border border-slate-800 rounded-xl p-4 text-xs space-y-3 flex flex-col justify-between"
+                  className="bg-black/80 border border-zinc-800 hover:border-red-950/60 rounded-xl p-4 text-xs space-y-3 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span
                         className={`text-[10px] font-bold px-2 py-0.5 rounded uppercase ${
                           rec.priority === 'HIGH'
-                            ? 'bg-rose-500/20 text-rose-400 border border-rose-500/30'
+                            ? 'bg-red-500/20 text-red-400 border border-red-500/30'
                             : 'bg-amber-500/20 text-amber-400 border border-amber-500/30'
                         }`}
                       >
                         {rec.priority} Priority
                       </span>
-                      <span className="font-mono font-bold text-slate-200">{rec.amount}</span>
+                      <span className="font-mono font-bold text-zinc-200">{rec.amount}</span>
                     </div>
 
                     <h4 className="font-semibold text-white text-sm">{rec.title}</h4>
-                    <p className="text-slate-400">{rec.impact}</p>
+                    <p className="text-zinc-400">{rec.impact}</p>
                   </div>
 
-                  <div className="pt-3 border-t border-slate-800/80 text-[11px] text-cyan-300 font-medium">
+                  <div className="pt-3 border-t border-zinc-800/80 text-[11px] text-red-400 font-medium">
                     Recommended Action:
-                    <p className="text-slate-300 mt-0.5 font-normal">{rec.action}</p>
+                    <p className="text-zinc-300 mt-0.5 font-normal">{rec.action}</p>
                   </div>
                 </div>
               ))}

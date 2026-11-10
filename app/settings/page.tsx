@@ -72,12 +72,12 @@ export default function SettingsPage() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-slate-950">
+      <div className="flex min-h-screen bg-black">
         <Sidebar />
         <div className="flex-1 flex flex-col">
           <Header title="Settings" />
           <div className="flex-1 flex items-center justify-center">
-            <Loader2 className="w-8 h-8 text-cyan-400 animate-spin" />
+            <Loader2 className="w-8 h-8 text-red-500 animate-spin" />
           </div>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <div className="flex min-h-screen bg-slate-950">
+    <div className="flex min-h-screen bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col min-w-0">
@@ -96,8 +96,8 @@ export default function SettingsPage() {
 
         <main className="flex-1 p-6 space-y-6 max-w-4xl mx-auto w-full">
           {feedback && (
-            <div className="p-3.5 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-xs flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+            <div className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/40 text-red-300 text-xs flex items-center gap-2">
+              <CheckCircle2 className="w-4 h-4 text-red-400" />
               <span>{feedback}</span>
             </div>
           )}
@@ -105,9 +105,9 @@ export default function SettingsPage() {
           {/* Architecture Status Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {/* Supabase Status */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
+            <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300 flex items-center gap-2">
+                <span className="text-xs font-semibold text-zinc-300 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span>Supabase PostgreSQL</span>
                 </span>
@@ -115,55 +115,55 @@ export default function SettingsPage() {
                   {status.supabaseConfigured ? 'CONNECTED' : 'STANDALONE MODE'}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-zinc-400">
                 11 tables with Row Level Security (RLS) configured in <code>supabase/migrations</code>.
               </p>
             </div>
 
             {/* PayPal Sandbox */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
+            <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300 flex items-center gap-2">
-                  <CreditCard className="w-4 h-4 text-sky-400" />
+                <span className="text-xs font-semibold text-zinc-300 flex items-center gap-2">
+                  <CreditCard className="w-4 h-4 text-rose-400" />
                   <span>PayPal Invoicing v2</span>
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-sky-500/10 text-sky-400 border border-sky-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-rose-500/10 text-rose-300 border border-rose-500/30">
                   {status.paypalConfigured ? 'LIVE SANDBOX' : 'MOCK SANDBOX'}
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-zinc-400">
                 Environment: <strong>{status.paypalEnv}</strong>. Ready for REST OAuth &amp; webhook dispatch.
               </p>
             </div>
 
             {/* Gemini Model */}
-            <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
+            <div className="bg-zinc-950/80 border border-zinc-800 rounded-2xl p-4.5 backdrop-blur-sm space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-semibold text-slate-300 flex items-center gap-2">
-                  <Terminal className="w-4 h-4 text-purple-400" />
+                <span className="text-xs font-semibold text-zinc-300 flex items-center gap-2">
+                  <Terminal className="w-4 h-4 text-red-400" />
                   <span>Gemini Intelligence</span>
                 </span>
-                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-purple-500/10 text-purple-400 border border-purple-500/30">
+                <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-red-500/10 text-red-400 border border-red-500/30">
                   ACTIVE
                 </span>
               </div>
-              <p className="text-[11px] text-slate-400">
+              <p className="text-[11px] text-zinc-400">
                 Model: <code>gemini-3.8-flash</code> with 8 tools, Function Calling, and Structured Outputs.
               </p>
             </div>
           </div>
 
           {/* Business Profile Configuration Form */}
-          <form onSubmit={handleSave} className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-4">
-            <div className="border-b border-slate-800 pb-3 flex items-center justify-between">
+          <form onSubmit={handleSave} className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-4">
+            <div className="border-b border-zinc-800 pb-3 flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-bold text-white">Merchant & Business Profile</h3>
-                <p className="text-xs text-slate-400">Appears on all PayPal draft invoices and reminder templates</p>
+                <p className="text-xs text-zinc-400">Appears on all PayPal draft invoices and reminder templates</p>
               </div>
               <button
                 type="submit"
                 disabled={saving}
-                className="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-400 text-white text-xs font-semibold flex items-center gap-1.5 shadow transition-all"
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-red-600 via-rose-600 to-red-700 hover:from-red-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-md shadow-red-950/40 transition-all"
               >
                 {saving && <Loader2 className="w-3.5 h-3.5 animate-spin" />}
                 <span>Save Changes</span>
@@ -172,7 +172,7 @@ export default function SettingsPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   Business / Studio Legal Name
                 </label>
                 <input
@@ -181,12 +181,12 @@ export default function SettingsPage() {
                   onChange={(e) =>
                     setBusinessProfile({ ...businessProfile, business_name: e.target.value })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   PayPal Sandbox Merchant Email
                 </label>
                 <input
@@ -198,12 +198,12 @@ export default function SettingsPage() {
                       paypal_merchant_email: e.target.value,
                     })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   Default Currency
                 </label>
                 <select
@@ -211,7 +211,7 @@ export default function SettingsPage() {
                   onChange={(e) =>
                     setBusinessProfile({ ...businessProfile, default_currency: e.target.value })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 >
                   <option value="USD">USD - United States Dollar</option>
                   <option value="EUR">EUR - Euro</option>
@@ -221,7 +221,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   Standard Payment Terms (Days)
                 </label>
                 <input
@@ -233,12 +233,12 @@ export default function SettingsPage() {
                       payment_terms_days: parseInt(e.target.value, 10),
                     })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 />
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   Default AI Reminder Tone
                 </label>
                 <select
@@ -246,7 +246,7 @@ export default function SettingsPage() {
                   onChange={(e) =>
                     setBusinessProfile({ ...businessProfile, reminder_tone: e.target.value })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 >
                   <option value="polite_firm">Polite &amp; Firm (Recommended)</option>
                   <option value="friendly">Friendly &amp; Warm</option>
@@ -255,7 +255,7 @@ export default function SettingsPage() {
               </div>
 
               <div>
-                <label className="block text-slate-300 font-medium mb-1">
+                <label className="block text-zinc-300 font-medium mb-1">
                   Tax ID / VAT Registration
                 </label>
                 <input
@@ -264,28 +264,28 @@ export default function SettingsPage() {
                   onChange={(e) =>
                     setBusinessProfile({ ...businessProfile, tax_id: e.target.value })
                   }
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-200 focus:outline-none focus:border-cyan-500"
+                  className="w-full bg-black border border-zinc-800 rounded-xl px-3 py-2 text-zinc-200 focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500/50"
                 />
               </div>
             </div>
           </form>
 
           {/* Supabase SQL Migration Guide Box */}
-          <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-3">
+          <div className="bg-zinc-950/80 border border-zinc-800/80 rounded-2xl p-6 backdrop-blur-sm space-y-3">
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-bold text-white flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   <span>Supabase Database Schema &amp; RLS Policies</span>
                 </h3>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-zinc-400">
                   SQL migration file located at: <code>supabase/migrations/20261110000001_initial_schema.sql</code>
                 </p>
               </div>
 
               <button
                 onClick={copySqlMigrationCommand}
-                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs flex items-center gap-1.5 transition-colors"
+                className="px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 hover:bg-zinc-800 text-zinc-200 text-xs flex items-center gap-1.5 transition-colors"
               >
                 {copiedSql ? (
                   <Check className="w-3.5 h-3.5 text-emerald-400" />
@@ -296,7 +296,7 @@ export default function SettingsPage() {
               </button>
             </div>
 
-            <div className="bg-slate-950 rounded-xl p-3 border border-slate-800 text-[11px] font-mono text-slate-300 overflow-x-auto">
+            <div className="bg-black rounded-xl p-3 border border-zinc-800 text-[11px] font-mono text-zinc-300 overflow-x-auto">
               # 11 Core PostgreSQL Tables Created &amp; Protected via Row Level Security (RLS):<br />
               • profiles &amp; business_profiles (user_id = auth.uid())<br />
               • clients &amp; invoices &amp; invoice_items (tenant data isolation)<br />

@@ -15,6 +15,7 @@ import {
   ShieldCheck,
   CreditCard,
   ExternalLink,
+  BookOpen,
 } from 'lucide-react';
 
 const navigation = [
@@ -24,6 +25,7 @@ const navigation = [
   { name: 'Clients', href: '/clients', icon: Users },
   { name: 'Insights', href: '/insights', icon: TrendingUp },
   { name: 'Activity Log', href: '/activity', icon: History },
+  { name: 'Documentation', href: '/docs', icon: BookOpen, badge: 'Guides' },
   { name: 'Settings & Supabase', href: '/settings', icon: Settings },
 ];
 

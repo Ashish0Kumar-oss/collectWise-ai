@@ -1,0 +1,6 @@
+{
+  "name": "CollectWise AI",
+  "description": "AI-Powered Payment Collection & Financial Management for Freelancers and Small Businesses. Get Paid Faster. Let AI Handle the Follow-ups.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
